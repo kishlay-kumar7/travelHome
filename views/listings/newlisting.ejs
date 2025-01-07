@@ -1,0 +1,111 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+  <form
+    method="post"
+    action="/listings/new"
+    class="needs-validation create-listing-form"
+    novalidate
+    enctype="multipart/form-data"
+  >
+    <h2>Create New Listing</h2>
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        type="text"
+        id="title"
+        name="listing[title]"
+        placeholder="Enter title"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Please provide a valid title.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        id="description"
+        name="listing[description]"
+        placeholder="Enter description"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Please provide a valid description.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Image</label>
+      <!-- Hidden File Input -->
+      <input
+        id="image"
+        name="listing[image]"
+        type="file"
+        class="form-control-file"
+        style="display: none"
+        required
+      />
+      <!-- Custom Label Styled as Button -->
+      <label for="image" class="btn btn-primary custom-file-button">
+        Choose image
+      </label>
+      <!-- Display File Name -->
+      <span id="file-name" class="file-name-display">No file chosen</span>
+      <div class="invalid-feedback">Please provide a valid image file.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input
+        type="number"
+        id="price"
+        name="listing[price]"
+        placeholder="Enter price in $(dollar)"
+        class="form-control"
+        required
+      />
+      <div class="invalid-feedback">Please provide a valid price.</div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="listing[location]"
+          placeholder="Enter location"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid location.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input
+          type="text"
+          id="country"
+          name="listing[country]"
+          placeholder="Enter country"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid country.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary submit-button">
+      Post Listing
+    </button>
+  </form>
+
+  <script>
+    // Display chosen file name dynamically
+    document.getElementById("image").addEventListener("change", function () {
+      const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+      document.getElementById("file-name").textContent = fileName;
+    });
+  </script>
+</body>

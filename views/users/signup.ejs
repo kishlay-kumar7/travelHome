@@ -1,0 +1,116 @@
+<% layout('layouts/boilerplate') %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/signup.css" />
+  </head>
+  <body class="signup-page-body">
+    <div class="signup-container">
+      <div class="signup-header text-center p-4">
+        <h2>Sign Up</h2>
+        <p>
+          Already have an account?
+          <a class="signup-link" href="/login">Login here</a>
+        </p>
+      </div>
+      <form
+        class="signup-form p-4 needs-validation"
+        action="/signup"
+        method="POST"
+        novalidate
+        autocomplete="on"
+      >
+        <!-- Username Field -->
+        <div class="mb-3">
+          <label for="username" class="form-label font-weight-bold"
+            >Username</label
+          >
+          <!-- Made label bold -->
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+          />
+          <div class="invalid-feedback">Username is required.</div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="mb-3">
+          <label for="email" class="form-label font-weight-bold">Email</label>
+          <!-- Made label bold -->
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid email.</div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-3">
+          <label for="password" class="form-label font-weight-bold"
+            >Password</label
+          >
+          <!-- Made label bold -->
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+          <div class="invalid-feedback">Password is required.</div>
+        </div>
+
+        <!-- Terms and Conditions Checkbox -->
+        <div class="mb-3 form-check d-flex align-items-center">
+          <input
+            type="checkbox"
+            class="form-check-input me-2"
+            id="terms"
+            required
+          />
+          <label for="terms" class="form-check-label">
+            I agree to the
+            <a class="signup-link" href="/terms" target="_blank"
+              >terms and conditions</a
+            >.
+          </label>
+          <div class="invalid-feedback">You must agree before submitting.</div>
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn btn-primary w-100"
+          disabled
+          id="signup-btn"
+        >
+          Sign Up
+        </button>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript to enable/disable submit button -->
+    <script>
+      const termsCheckbox = document.getElementById("terms");
+      const signupButton = document.getElementById("signup-btn");
+      termsCheckbox.addEventListener("change", () => {
+        signupButton.disabled = !termsCheckbox.checked;
+      });
+    </script>
+  </body>
+</html>

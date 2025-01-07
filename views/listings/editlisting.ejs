@@ -1,0 +1,113 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+  <div class="edit-container">
+    <h2>Edit Your Listing Below</h2>
+    <br /><br />
+    <form
+      method="post"
+      action="/listings/<%=data._id%>/edit?_method=PATCH"
+      class="edit-form needs-validation"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="title">Title: </label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%=data.title%>"
+          class="form-input form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid title.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description: </label>
+        <textarea
+          name="listing[description]"
+          class="form-input form-control"
+          required
+        >
+          <%=data.description%>
+        </textarea>
+        <div class="invalid-feedback">Please provide a valid description.</div>
+      </div>
+      <div class="form-group">
+        <label for="image">Original Image</label>
+        <div>
+          <img
+            style="height: 170px; width: 270px; margin-bottom: 10px"
+            src="<%=data.image.url %>"
+            alt="your previous listing image"
+          />
+        </div>
+        <!-- Hidden File Input -->
+        <input
+          id="image"
+          name="listing[image]"
+          type="file"
+          class="form-control-file"
+          style="display: none"
+        />
+        <!-- Custom Label Styled as Button -->
+        <label for="image" class="btn btn-primary custom-file-button">
+          Choose new image
+        </label>
+        <span id="file-name" class="file-name-display">No file chosen</span>
+
+        <div class="invalid-feedback">Please provide a valid image file.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price: </label>
+        <input
+          type="number"
+          name="listing[price]"
+          value="<%=data.price%>"
+          class="form-input form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid Price.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location: </label>
+        <input
+          type="text"
+          name="listing[location]"
+          value="<%=data.location%>"
+          class="form-input form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid location.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country: </label>
+        <input
+          type="text"
+          name="listing[country]"
+          value="<%=data.country%>"
+          class="form-input form-control"
+          required
+        />
+        <div class="invalid-feedback">Please provide a valid Country.</div>
+      </div>
+
+      <button type="submit" class="update-button">Update Listing</button>
+    </form>
+    <br />
+    <br />
+    <br />
+  </div>
+
+  <!-- Add the JavaScript here to dynamically display the file name -->
+  <script>
+    // Display chosen file name dynamically
+    document.getElementById("image").addEventListener("change", function () {
+      const fileName = this.files[0] ? this.files[0].name : "No file chosen";
+      document.getElementById("file-name").textContent = fileName;
+    });
+  </script>
+</body>

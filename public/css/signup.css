@@ -1,0 +1,126 @@
+/* General container styling for both login and signup pages */
+.signup-container,
+.login-container {
+  max-width: 450px;
+  margin: 70px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: #f8f9fa; /* Same background as login page */
+  padding: 20px;
+}
+
+/* Removing unnecessary two-box layout in the signup form */
+.signup-form,
+.login-signup-form {
+  background-color: #ffffff; /* Same background as login page form */
+  padding: 20px; /* Adjust padding for better spacing */
+}
+
+.signup-form input,
+.signup-form button,
+.login-signup-form input,
+.login-signup-form button {
+  border-radius: 8px;
+}
+
+/* Styling for the link */
+.signup-link,
+.login-link {
+  color: #17a2b8;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-link:hover,
+.login-link:hover {
+  color: #138496;
+  text-decoration: underline;
+}
+
+/* Button styles for form submission */
+.signup-form button,
+.login-signup-form button {
+  font-size: 1.1rem;
+  padding: 12px 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+.signup-form button:hover,
+.login-signup-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Body styling for signup and login page */
+.signup-page-body,
+.login-signup-page {
+  background-color: #f0f0f0; /* Same background color as login page */
+  font-family: "Arial", sans-serif;
+}
+
+/* Form input fields */
+.signup-form input,
+.login-signup-form input {
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #dee2e6;
+  margin-bottom: 10px;
+}
+
+/* Form input error messages */
+.signup-form .invalid-feedback,
+.login-signup-form .invalid-feedback {
+  font-size: 0.875rem;
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+/* Styling for the 'Terms' checkbox */
+.signup-form .form-check,
+.login-signup-form .form-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.signup-form .form-check-input,
+.login-signup-form .form-check-input {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.2rem;
+}
+
+/* Terms text styling */
+.signup-form .form-check-label,
+.login-signup-form .form-check-label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.signup-form .form-check-label a,
+.login-signup-form .form-check-label a {
+  color: #17a2b8;
+  text-decoration: none;
+}
+
+.signup-form .form-check-label a:hover,
+.login-signup-form .form-check-label a:hover {
+  text-decoration: underline;
+}
+
+/* Disable button when checkbox is unchecked */
+.signup-form button[disabled],
+.login-signup-form button[disabled] {
+  background-color: #6fb2f9a7;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 480px) {
+  .signup-container,
+  .login-container {
+    width: 90%;
+  }
+}

@@ -1,0 +1,169 @@
+<% layout('/layouts/boilerplate') %>
+<body>
+  <div class="container mt-4">
+    <!-- Listing Details -->
+    <div class="view-listing-details">
+      <div class="view-listing-item d-flex flex-wrap align-items-start">
+        <img
+          src="<%= data.image.url %>"
+          alt="<%= data.title %> image"
+          class="view-listing-image img-fluid rounded shadow-sm mb-3"
+        />
+        <div class="view-listing-info" style="width: 40%; padding: 70px">
+          <p class="text-muted" style="font-size: 1.1rem">
+            <i>Hosted by <b><%= data.owner.username %></b></i>
+          </p>
+          <p class="view-listing-title h4 text-primary">
+            <b><%= data.title %></b>
+          </p>
+          <p class="view-listing-description text-secondary">
+            <%= data.description %>
+          </p>
+          <p class="view-listing-price text-success h5">
+            <% if (data.price !== null && data.price !== undefined) { %> <%=
+            data.price.toLocaleString('en-US', { style: 'currency', currency:
+            'USD' }) %> <% } else { %>
+            <span class="text-danger">Price not available</span>
+            <% } %>
+          </p>
+          <p class="view-listing-location text-muted">
+            <i class="fas fa-map-marker-alt"></i> <%= data.location %>, <%=
+            data.country %>
+          </p>
+          <div class="view-buttons d-flex gap-2" style="margin-top: 20px">
+            <form method="get" action="/listings/<%= data._id %>/edit">
+              <button
+                class="btn btn-success"
+                style="padding: 10px 20px; font-size: 1.1rem"
+              >
+                Edit
+              </button>
+            </form>
+            <form
+              method="post"
+              action="/listings/<%= data._id %>/delete?_method=DELETE"
+            >
+              <button
+                class="btn btn-danger"
+                style="padding: 10px 20px; font-size: 1.1rem"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Section -->
+    <div class="row mt-5 mb-4">
+      <!-- Left: Feedback Form -->
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <h4 class="text-primary">Leave a Review</h4>
+          <form
+            method="post"
+            action="/listings/<%= data._id %>/reviews"
+            class="needs-validation"
+            novalidate
+          >
+            <!-- Comment Input -->
+            <div class="mb-3">
+              <label for="comment" class="form-label text-primary"
+                ><b>Comment</b></label
+              >
+              <textarea
+                class="form-control"
+                id="comment"
+                name="comment"
+                rows="3"
+                placeholder="Write your review here..."
+                required
+              ></textarea>
+              <div class="invalid-feedback">
+                Please provide a comment for your review.
+              </div>
+            </div>
+            <!-- Rating Input -->
+            <div class="mb-3">
+              <label for="rating" class="form-label text-primary"
+                ><b>Rating</b></label
+              >
+              <select class="form-select" id="rating" name="rating" required>
+                <option value="" disabled selected>Select a rating</option>
+                <option value="1">1 - Very Poor</option>
+                <option value="2">2 - Poor</option>
+                <option value="3">3 - Average</option>
+                <option value="4">4 - Good</option>
+                <option value="5">5 - Excellent</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a rating for your review.
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="padding: 10px 20px"
+              >
+                Submit Review
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Reviews Display -->
+      <div class="col-md-8">
+        <h4 class="text-primary">Reviews</h4>
+        <% if (data.reviews.length === 0) { %>
+        <p class="text-muted">No reviews yet. Be the first to leave one!</p>
+        <% } else { %> <% for (let review of data.reviews) { %>
+        <div class="reviews-list">
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <!-- Reviewer's Name -->
+              <p class="card-text">
+                <% if (review.author) { %>
+                <b><i class="text-primary"><%= review.author.username %></i></b>
+                <% } else { %>
+                <b><i class="text-primary">Anonymous</i></b>
+                <% } %>
+                <span class="text-muted">says:</span>
+              </p>
+              <!-- Rating -->
+              <p class="card-text">
+                <b>Rating:</b> <%= review.rating %> / 5 &nbsp; <% for (let i =
+                0; i < review.rating; i++) { %>
+                <i class="fas fa-star" style="color: gold"></i>
+                <% } %> <% for (let i = 0; i < 5 - review.rating; i++) { %>
+                <i class="fas fa-star" style="color: lightgray"></i>
+                <% } %>
+              </p>
+              <!-- Comment -->
+              <p class="card-text text-secondary"><%= review.comment %></p>
+              <!-- Delete Review Button -->
+              <form
+                method="post"
+                action="/listings/<%= data._id %>/reviews/<%= review._id %>?_method=DELETE"
+              >
+                <button class="btn btn-danger btn-sm" style="padding: 5px 15px">
+                  Delete
+                </button>
+              </form>
+            </div>
+            <!-- Date in Footer -->
+            <div class="card-footer text-muted">
+              Reviewed on <%= new
+              Date(review.createAt).toLocaleDateString('en-US', { year:
+              'numeric', month: 'long', day: 'numeric' }) %>
+            </div>
+          </div>
+        </div>
+        <% } %> <% } %>
+      </div>
+    </div>
+  </div>
+</body>

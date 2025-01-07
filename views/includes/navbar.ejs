@@ -1,0 +1,66 @@
+<nav
+  class="navbar navbar-expand-lg navbar-light sticky-top border-bottom custom-navbar"
+>
+  <div class="container-fluid">
+    <a href="/listings" class="navbar-brand" style="margin-top: -15px">
+      <i
+        class="fas fa-compass"
+        style="color: #fe424d; font-size: 48px; margin-left: 50px"
+      ></i>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto"></ul>
+
+      <!-- New Search Bar with Search Icon Inside -->
+      <form class="d-flex custom-search-bar mx-auto">
+        <input
+          type="text"
+          class="form-control search-input"
+          placeholder="Search destinations"
+        />
+        <button class="btn search-button" type="submit">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <!-- Right-aligned section with Add Listing, Login, and Signup -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link btn add-listing-btn" href="/listings/new"
+            >Add Listing</a
+          >
+        </li>
+        <% if (!currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link btn login-btn" href="/login"
+            ><i class="fas fa-sign-in-alt"></i> Login</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn signup-btn" href="/signup"
+            ><i class="fas fa-user-plus"></i> Sign Up</a
+          >
+        </li>
+        <% } %> <% if (currentUser) { %>
+        <li class="nav-item">
+          <a class="nav-link btn logout-btn" href="/logout"
+            ><i class="fas fa-sign-out-alt"></i> Logout</a
+          >
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

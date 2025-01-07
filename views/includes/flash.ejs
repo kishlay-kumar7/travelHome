@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flash Messages</title>
+    <link rel="stylesheet" href="/css/flash.css" />
+  </head>
+  <body>
+    <div class="flash-container">
+      <% if (success && success.length) { %>
+      <div class="flash-message alert alert-success" role="alert">
+        <i class="fas fa-check-circle"></i> <%= success %>
+        <span class="close-btn">&times;</span>
+      </div>
+      <% } %> <% if (error && error.length) { %>
+      <div class="flash-message alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-circle"></i> <%= error %>
+        <span class="close-btn">&times;</span>
+      </div>
+      <% } %>
+    </div>
+
+    <script>
+      setTimeout(function () {
+        const flashMessages = document.querySelectorAll(".flash-message");
+        flashMessages.forEach(function (message) {
+          message.style.display = "none";
+        });
+      }, 4500);
+
+      const closeButtons = document.querySelectorAll(".close-btn");
+      closeButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const message = btn.parentElement;
+          message.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>

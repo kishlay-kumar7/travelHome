@@ -1,0 +1,557 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  line-height: 110px;
+  font-family: "Arial", sans-serif;
+  border-radius: 25px;
+  padding: 15px 30px;
+}
+
+.navbar-toggler {
+  border: 1px solid #ccc;
+}
+
+.nav-link {
+  color: #555 !important;
+  font-weight: 600;
+  margin-right: 15px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nav-link.btn {
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  color: #fff !important;
+  font-weight: 700;
+  text-align: center;
+  margin-top: -15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.add-listing-btn {
+  background-color: #ff5a5f;
+}
+
+.add-listing-btn:hover {
+  background-color: #e24c51;
+}
+
+.login-btn {
+  background-color: #007bff;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.signup-btn {
+  background-color: #28a745;
+}
+
+.signup-btn:hover {
+  background-color: #218838;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+.custom-search-bar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 25px;
+  position: relative;
+}
+
+.search-input {
+  width: 80%;
+  height: 60px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  padding-right: 50px;
+  position: relative;
+  background-color: transparent; /* Removed background on focus */
+  font-family: "Courier New", Courier, monospace; /* Font for typed text */
+  transition: border 0.3s ease; /* Smooth transition for border */
+}
+
+.search-input:focus {
+  outline: none;
+  border: 1px solid #a81f1f !important; /* Keep the border color the same on focus */
+  background-color: transparent; /* Removed background on focus */
+}
+
+.search-input::placeholder {
+  font-family: "Arial", sans-serif; /* Font for placeholder */
+  font-size: 0.9rem; /* Smaller placeholder font */
+  color: #888; /* Light gray color for placeholder */
+}
+
+.search-button {
+  position: absolute;
+  right: 130px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fe424d;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #e24c51;
+}
+
+.search-button i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .nav-link {
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .navbar-nav {
+    margin-top: 10px;
+  }
+
+  .nav-link.btn {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .search-input {
+    width: 75%;
+  }
+}
+
+.navbar-nav.ms-auto {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar-nav .nav-item {
+  margin-left: 15px;
+}
+
+/* above was the navbar styling */
+/* listing css starts here haaaa */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.my-4 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.listing-item {
+  position: relative;
+  border-radius: 8px;
+  box-shadow: none;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  margin-bottom: 5px;
+  width: 100%;
+  max-width: 360px;
+  margin-left: 40px;
+  margin-right: 36px;
+}
+
+.listing-item:hover {
+  transform: none;
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.listing-image-container {
+  position: relative;
+}
+
+.listing-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.2s ease;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.listing-info {
+  padding: 1rem;
+  background-color: white;
+}
+
+.listing-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.listing-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.listing-price {
+  font-size: 1.1rem;
+  color: #ff5a5f;
+  font-weight: bold;
+}
+
+.listing-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.listing-link:hover {
+  background-color: #f5f5f5;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.col-md-4,
+.col-sm-6 {
+  padding: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: calc(33.333% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .col-sm-6 {
+    width: calc(50% - 7px);
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* editing listnig styles start here */
+/* Style for the entire form */
+.edit-container {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #ff5a5f;
+}
+
+textarea.form-input {
+  resize: vertical;
+  height: 120px;
+}
+
+.update-button {
+  background-color: #ff5a5f;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.update-button:hover {
+  background-color: #e84e50;
+}
+
+.form-group-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.form-group-inline .form-input {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .edit-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .form-input {
+    font-size: 0.9rem;
+  }
+
+  .update-button {
+    font-size: 0.9rem;
+  }
+
+  .form-group-inline {
+    flex-direction: column;
+  }
+}
+
+/* view page css */
+.view-listing-details {
+  padding: 20px;
+}
+
+.view-listing-item {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.view-listing-image {
+  width: 100%; /* Makes the image take up the full width of its container */
+  max-width: 800px; /* Set a max-width for the image */
+  height: auto; /* Keeps the aspect ratio of the image intact */
+  object-fit: cover; /* Ensures the image covers the space without stretching */
+  border-radius: 10px;
+}
+
+.view-listing-info {
+  width: 40%;
+  padding-left: 80px; /* Adds padding to the left of the info section */
+}
+
+.view-listing-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.view-listing-description {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.view-listing-price {
+  font-size: 1.3rem;
+  color: #ff5a5f;
+  margin-bottom: 10px;
+}
+
+.listing-price span {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.view-listing-location,
+.view-listing-country {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.view-edit-button,
+.view-delete-button {
+  padding: 10px 20px;
+  background-color: #ff5a5f;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-edit-button:hover,
+.view-delete-button:hover {
+  background-color: #e84e50;
+}
+
+/* newlisting update code starts here */
+/* Form Container */
+/* Form Container */
+
+.create-listing-form {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.create-listing-form h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+/* .form-group input:focus {
+  border-color: #ff5a5f;
+} */
+
+.submit-button {
+  background-color: #039b03;
+  color: white;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #e84e50;
+}
+
+@media (max-width: 768px) {
+  .create-listing-form {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .create-listing-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .submit-button {
+    font-size: 1rem;
+  }
+}
+
+/* form image upload file css  */
+/* Style for the "Choose File" button */
+.custom-file-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #003ef776;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.custom-file-button:hover {
+  background-color: #0056b3;
+}
+
+.file-name-display {
+  font-size: 0.9rem;
+  color: #28a745;
+  font-weight: bold;
+}
